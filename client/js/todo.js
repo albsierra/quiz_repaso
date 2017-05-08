@@ -23,7 +23,7 @@ angular
         .create($scope.newPuntuacion)
         .$promise
         .then(function(todo) {
-          $scope.newPuntuacion = '';
+          $scope.newPuntuacion.puntos = '';
           $scope.todoForm.puntos.$setPristine();
           $('.focus').focus();
           getPuntuacions();

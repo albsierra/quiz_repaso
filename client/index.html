@@ -18,13 +18,23 @@
     <![endif]-->
   </head>
   <body ng-app="app">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">LoopBack Angular example</a>
-        </div>
-      </div>
-    </div>
+    <header>
+      <h1>Puntuaciones de los juegos</h1>
+      <h2 ng-show="currentUser">Hola {{currentUser.email}}</h2>
+      <nav>
+        <ul>
+          <li>
+            <a ui-sref="todo" ui-sref-active="active">Puntuaciones</a>
+          </li>
+          <li ng-hide="currentUser">
+            <a ui-sref="login" ui-sref-active="active">Log in</a>
+          </li>
+          <li ng-show="currentUser">
+            <a ui-sref="logout" ui-sref-active="active">Log out</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
     <div class="container">
       <div ui-view></div>
@@ -36,7 +46,9 @@
     <script src="vendor/angular-resource/angular-resource.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="js/lb-services.js"></script>
+    <script src="js/authService.js"></script>
     <script src="js/app.js"></script>
     <script src="js/todo.js"></script>
+    <script src="js/auth.js"></script>
   </body>
 </html>

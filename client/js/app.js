@@ -6,26 +6,51 @@
 angular
   .module('app', [
     'lbServices',
+    'authService',
     'ui.router'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider,
-      $urlRouterProvider, $httpProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
+      $urlRouterProvider) {
     $stateProvider
       .state('todo', {
         url: '',
         templateUrl: 'views/todo.html',
         controller: 'TodoController'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'AuthLoginController'
+      })
+      .state('logout', {
+        url: '/logout',
+        controller: 'AuthLogoutController'
       });
 
     $urlRouterProvider.otherwise('todo');
 
-    $httpProvider.interceptors.push(function($q) {
-    return {
-     'request': function(config) {
+  }])
+    .run(['$rootScope', '$state', 'LoopBackAuth', 'AuthService', function($rootScope, $state, LoopBackAuth, AuthService) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+      // redirect to login page if not logged in
+      if (toState.authenticate && !LoopBackAuth.accessTokenId) {
+        event.preventDefault(); //prevent current page from loading
 
-          config.headers['access_token'] = '9wwzZuFOrBqFxkqEwDBhX3kjXcQK6K4qiPlg9TV2D2MUQPZRNuVmnVTAT1Iqu8zm';
-          return config;
+        // Maintain returnTo state in $rootScope that is used
+        // by authService.login to redirect to after successful login.
+        // http://www.jonahnisenson.com/angular-js-ui-router-redirect-after-login-to-requested-url/
+        $rootScope.returnTo = {
+          state: toState,
+          params: toParams
+        };
+
+        $state.go('forbidden');
       }
-    };
-  });
-  }]);
+    });
+
+    // Get data from localstorage after pagerefresh
+    // and load user data into rootscope.
+    if (LoopBackAuth.accessTokenId && !$rootScope.currentUser) {
+      AuthService.refresh(LoopBackAuth.accessTokenId);
+    }
+}]);
