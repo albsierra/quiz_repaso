@@ -8,8 +8,8 @@ angular
     'lbServices',
     'ui.router'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
-      $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider,
+      $urlRouterProvider, $httpProvider) {
     $stateProvider
       .state('todo', {
         url: '',
@@ -18,4 +18,14 @@ angular
       });
 
     $urlRouterProvider.otherwise('todo');
+
+    $httpProvider.interceptors.push(function($q) {
+    return {
+     'request': function(config) {
+
+          config.headers['access_token'] = '9wwzZuFOrBqFxkqEwDBhX3kjXcQK6K4qiPlg9TV2D2MUQPZRNuVmnVTAT1Iqu8zm';
+          return config;
+      }
+    };
+  });
   }]);

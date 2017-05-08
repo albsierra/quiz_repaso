@@ -16,7 +16,7 @@
 </form>
 <hr>
 <div class="list-group">
-  <a class="list-group-item" ng-repeat="todo in todos">{{todo.usuarioId}} - {{todo.puntos}}&nbsp;
+  <a class="list-group-item" ng-repeat="todo in todos">{{todo.juego.nombre}} - {{todo.usuario.nombre}} - {{todo.puntos}}&nbsp;
     <i class="glyphicon glyphicon-remove pull-right"
         ng-click="removePuntuacion(todo)"></i></a>
 </div>

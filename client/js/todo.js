@@ -10,9 +10,9 @@ angular
     $scope.todos = [];
     function getPuntuacions() {
       Puntuacion
-        .find()
+        .find({"filter":{"include":["usuario","juego"]}})
         .$promise
-        .then(function(results) {
+        .then(function(results) { console.log(results);
           $scope.todos = results;
         });
     }
