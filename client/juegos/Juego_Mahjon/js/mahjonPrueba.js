@@ -15,8 +15,9 @@ $(document).ready(function() {
 		$("#iniciar").attr("style", "visibility: visible");
 		$("#enlace").attr("style", "visibility: visible");
 		$("#jugar").attr("style", "visibility: hidden");
-		$("#formulario").attr("style", "visibility: hidden");
+		$("#formulario").css("visibility", "hidden");
 		$("#intro").attr("style", "visibility: hidden");
+		$("#capaResultado").css("visibility", "hidden");
 		CargaAleatorio();
 		limpiar();
 		niveles();
@@ -41,12 +42,13 @@ function niveles() {
 }
 
 window.onload = function(){
-	$("#capaResultado").attr("style", "visibility: hidden");
+	$("#capaResultado").css("visibility", "hidden");
 	$("#iniciar").attr("style", "visibility: hidden");
 	$("#enlace").attr("style", "visibility: hidden");
 	$("#monedilla").attr("style", "visibility: hidden");
 	$("#contadorIntentos").attr("style", "visibility: hidden");
 	$("#intro").attr("style", "visibility: visible");
+	$("#formulario").css("visibility", "hidden");
 	setInterval(blink, 1000);
 	setInterval(textoParpadea, 1000);
 	setInterval(flechaParpadeo, 1000);
@@ -70,7 +72,7 @@ function cronometro(){
 		//alert("Se le ha acabado el tiempo");
 		$("#iniciar").fadeTo("slow",0.3);
 		//document.getElementById('iniciar').style.opacity = 0.3;
-		$("#capaResultado").attr("style", "visibility: visible");
+		//$("#capaResultado").attr("style", "visibility: visible");
 		marcador();
 		//location.reload();
 	}else{
@@ -88,7 +90,7 @@ function marcador() {
 	var nivel2 = document.getElementById("intermedio").checked;
 	var nivel3 = document.getElementById("principiante").checked;
 	if (nivel1 == true) {
-		elegido = 40;
+		elegido = 1;
 	}
 	if (nivel2 == true) {
 		elegido = 50;
@@ -101,7 +103,9 @@ function marcador() {
 	var segundos = parseInt(cuentaAtras) / parseInt(elegido);
 	var segundosFinales = segundos * 1000;
 	resultado = parseInt(puntuacion) + parseInt(segundosFinales);
-	var url = "indatos.php?puntos="+resultado;
+	var url = "indatos.php?puntos="+resultado;$('#puntos').val(resultado);
+	$('#puntuacionFalsa').text("Puntuacion: "+resultado);
+	$("#formularioPuntos").css("visibility", "visible");
 
 	if(resultado >= 0 && resultado <= 1000) {
 		$("#score").html(resultado + " puntos");
@@ -148,14 +152,14 @@ function CargaAleatorio() {
 		aux = imagenes[i];
 		imagenes[i] = imagenes[aleatorio];
 		imagenes[aleatorio] = aux;
-		document.getElementById(i + "a").src = "imagenes/"+imagenes[i];
+		document.getElementById(i + "a").src = "juegos/Juego_Mahjon/imagenes/"+imagenes[i];
 	}
 }
 
 // Asegura que las cartas se darán la vuelta al inicio del juego
 function limpiar() {
 	for(i = 1;i <= 20;i++) {
-		document.getElementById(i + "a").src = "imagenes/0.png";
+		document.getElementById(i + "a").src = "juegos/Juego_Mahjon/imagenes/0.png";
 	}
 }
 
@@ -169,11 +173,11 @@ function clickar(valor) {
 		if(turno == 0) { // Si es el primer turno
 			valor1 = valor;
 			turno = 1;
-			document.getElementById(valor1+"a").src = "imagenes/"+imagenes[valor1];
+			document.getElementById(valor1+"a").src = "juegos/Juego_Mahjon/imagenes/"+imagenes[valor1];
 		} else { // En el segundo turno si son diferentes enseña la carta medio segundo
 			valor2 = valor;
 			turno = 0;
-			document.getElementById(valor2+"a").src = "imagenes/"+imagenes[valor2];
+			document.getElementById(valor2+"a").src = "juegos/Juego_Mahjon/imagenes/"+imagenes[valor2];
 			$("#contadorIntentos").attr("style", "visibility: visible");
 			
 			if(imagenes[valor1] == imagenes[valor2]) {
@@ -191,8 +195,8 @@ function clickar(valor) {
 					//restante = parseInt(intentosRestantes) - parseInt(intentos);
 					$("#monedilla").attr("style", "visibility: visible");
 					$("#contadorIntentos").html(" X " + aciertos);
-					document.getElementById(valor1+"a").src = "imagenes/0.png"; 
-					document.getElementById(valor2+"a").src = "imagenes/0.png";
+					document.getElementById(valor1+"a").src = "juegos/Juego_Mahjon/imagenes/0.png"; 
+					document.getElementById(valor2+"a").src = "juegos/Juego_Mahjon/imagenes/0.png";
 					document.getElementById(valor1+"a").removeAttribute("disabled");
 					document.getElementById(valor2+"a").removeAttribute("disabled");
 					valor1 = 0;

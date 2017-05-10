@@ -18,9 +18,9 @@ angular
     }
     getPuntuacions();
 
-    $scope.addPuntuacion = function() {
+    $scope.addPuntuacion = function(vpuntos) {
       Puntuacion
-        .create($scope.newPuntuacion)
+        .create($scope.newPuntuacion) //.create({"puntos": vpuntos})
         .$promise
         .then(function(todo) {
           $scope.newPuntuacion.puntos = '';
