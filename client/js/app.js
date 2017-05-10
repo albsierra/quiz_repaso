@@ -22,6 +22,11 @@ angular
         templateUrl: 'views/login.html',
         controller: 'AuthLoginController'
       })
+      .state('mahjon', {
+        url: '/mahjon',
+        templateUrl: 'juegos/Juego_Mahjon/mahjonPrueba.html',
+        controller: 'TodoController'
+      })
       .state('logout', {
         url: '/logout',
         controller: 'AuthLogoutController'

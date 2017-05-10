@@ -1,0 +1,76 @@
+		<div id="body">
+
+				<div id="intro">
+					<p>Clica en la caja interrogante.</p>
+				</div>
+
+				<input type="button" id="jugar">
+						<div id="formulario"><form>
+						  <input type="radio" name="gender"  id="avanzado" class="radioButton" value="avanzado"><img src="juegos/Juego_Mahjon/imagenes/browser.png" class="radio2">
+						  <input type="radio" name="gender"  id="intermedio" class="radioButton" checked="checked" value="intermedio"> <img src="juegos/Juego_Mahjon/imagenes/mario.png" class="radio2">
+						  <input type="radio" name="gender" id="principiante" class="radioButton" value="principiante"> <img src="juegos/Juego_Mahjon/imagenes/bebe.png" class="radio2">
+						</form></div>
+				<div id="iniciar">
+					<div id="contadores">
+						<a href="javascript:location.reload()" id="enlace"></a>
+						<div id="cuentaAtras"></div>
+						<div id="monedilla"></div><div id="contadorIntentos"></div>
+					</div>
+
+					<div id="juego">
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="1a" alt="imagen" onclick="clickar('1')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="2a" alt="imagen" onclick="clickar('2')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="3a" alt="imagen" onclick="clickar('3')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="4a" alt="imagen" onclick="clickar('4')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="5a" alt="imagen" onclick="clickar('5')"></div>
+					
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="6a" alt="imagen" onclick="clickar('6')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="7a" alt="imagen" onclick="clickar('7')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="8a" alt="imagen" onclick="clickar('8')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="9a" alt="imagen" onclick="clickar('9')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="10a" alt="imagen" onclick="clickar('10')"></div>
+					
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="11a" alt="imagen" onclick="clickar('11')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="12a" alt="imagen" onclick="clickar('12')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="13a" alt="imagen" onclick="clickar('13')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="14a" alt="imagen" onclick="clickar('14')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="15a" alt="imagen" onclick="clickar('15')"></div>
+					
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="16a" alt="imagen" onclick="clickar('16')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="17a" alt="imagen" onclick="clickar('17')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="18a" alt="imagen" onclick="clickar('18')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="19a" alt="imagen" onclick="clickar('19')"></div>
+						<div class="monedas"><img src="juegos/Juego_Mahjon/imagenes/0.png" id="20a" alt="imagen" onclick="clickar('20')"></div>
+					</div>
+				</div>
+
+					
+						<!--<div id="capaResultado"><div id="imagenCastillo"><img src="juegos/Juego_Mahjon/imagenes/celebracion.gif"></div>
+						<div id="score"></div>
+						<div id="estrellas">
+							<img src="juegos/Juego_Mahjon/imagenes/estrella.png" class="estrellita" id="estrella1">
+							<img src="juegos/Juego_Mahjon/imagenes/estrella.png" class="estrellita" id="estrella2">
+							<img src="juegos/Juego_Mahjon/imagenes/estrella.png" class="estrellita" id="estrella3">
+						</div>
+						<input type="submit" id="enlace2" value="Guardar">
+						<a href="javascript:location.reload()" id="enlace"><img src="juegos/Juego_Mahjon/imagenes/flecha.png" id="flechaEnlace"></a></div>-->
+<div id="formularioPuntos" style="visibility: hidden; z-index: 1">
+<form name="todoForm" novalidate ng-submit="addPuntuacion();">
+  <div class="form-group"
+      ng-class="{'has-error': todoForm.puntos.$invalid
+        && todoForm.puntos.$dirty}">
+    <input type="hidden" class="form-control focus" id="puntos" name="puntos"
+        placeholder="Puntuacion" autocomplete="off" required
+        ng-model="newPuntuacion.puntos">
+    <span id="puntuacionFalsa"></span>
+    <span class="has-error control-label" ng-show="
+        todoForm.puntos.$invalid && todoForm.puntos.$dirty">
+      Content is required.
+    </span>
+  </div>
+  <button class="btn btn-default" ng-disabled="todoForm.$invalid">Add</button>
+</form>
+</div>
+					
+		</div>
+    <script type="text/javascript" src="juegos/Juego_Mahjon/js/mahjonPrueba.js"></script>
